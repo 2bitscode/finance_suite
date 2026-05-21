@@ -467,70 +467,100 @@ select.if{
 #toast.hide-anim{display:block;animation:toastOut .22s cubic-bezier(.4,0,.2,1) forwards}
 
 /* ══════════════════════════════════════════════════════════
-   LEASE FINANCE PRO — scoped to #t-lease to avoid conflicts
+   LEASE FINANCE PRO — light theme matching other tabs
    ══════════════════════════════════════════════════════════ */
-#t-lease{position:relative;background:#0f172a;color:#e5e7eb;min-height:100vh;margin:0 -14px;padding:14px;padding-bottom:calc(var(--tab) + env(safe-area-inset-bottom,0px) + 34px)}
-#t-lease .header{font-size:20px;font-weight:800;margin-bottom:12px}
-#t-lease .card{background:#111827;border-radius:16px;padding:12px;margin-bottom:10px;border:1px solid rgba(255,255,255,0.06)}
-#t-lease .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-#t-lease .advGrid{display:grid;grid-template-columns:2fr 1fr 1fr 0.5fr;gap:6px;align-items:center;margin-top:6px}
-@media(max-width:420px){
-  #t-lease .grid{grid-template-columns:1fr}
-  #t-lease .advGrid{grid-template-columns:2fr 1fr 1fr 0.5fr !important}
-}
-#t-lease input,#t-lease select{width:100%;padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:#0b1220;color:white;font-size:13px;box-sizing:border-box}
-#t-lease .btn{width:100%;padding:12px;border:none;border-radius:12px;background:linear-gradient(135deg,#3b82f6,#06b6d4);color:white;font-weight:700;margin-top:8px;cursor:pointer}
-#t-lease .btnRow{display:flex;gap:8px}
-#t-lease .btn2{flex:1;padding:10px;border-radius:12px;border:none;font-weight:700;background:#1f2937;color:white;cursor:pointer}
-#t-lease .seg{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap;background:none;border-radius:0;padding:0}
-#t-lease .segBtn{flex:1;padding:9px;border-radius:12px;border:1px solid rgba(255,255,255,0.12);background:#0b1220;color:#cbd5e1;font-size:11px;font-weight:600;min-width:80px;cursor:pointer}
-#t-lease .segBtn.active{background:linear-gradient(135deg,#3b82f6,#06b6d4);color:white;border:none}
-#t-lease .cardResult{background:linear-gradient(135deg,#1f2937,#0b1220);border-radius:16px;padding:12px;margin-top:10px;transition:opacity .25s}
-#out.stale{opacity:.35;pointer-events:none}
-#staleNote{display:none;text-align:center;font-size:12px;color:#f59e0b;margin-top:8px;font-weight:600}
-#out.stale+#staleNote{display:block}
-#t-lease .line{display:flex;justify-content:space-between;padding:4px 0;font-size:12px;color:#cbd5e1;border-bottom:1px solid rgba(255,255,255,0.05)}
-#t-lease .finalLine{display:flex;justify-content:space-between;padding:6px 0;font-size:13px;font-weight:800;color:#22c55e;margin-top:6px}
-#t-lease .small{color:#94a3b8;font-size:11px;padding:2px 0}
+#t-lease .lhdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+#t-lease .lhdr-title{font-size:19px;font-weight:800;letter-spacing:-.3px;color:var(--text);display:flex;align-items:center;gap:7px}
 
-#histBtn{position:absolute;right:14px;top:14px;background:#1f2937;border:1px solid rgba(255,255,255,0.12);color:#94a3b8;font-size:12px;font-weight:700;padding:7px 12px;border-radius:10px;cursor:pointer;display:flex;align-items:center;gap:6px}
-#histBtn span.badge{background:#3b82f6;color:#fff;border-radius:99px;font-size:10px;padding:1px 6px;min-width:16px;text-align:center}
-#histOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:300}
+/* advance card */
+.adv-card{background:var(--bg2);border:1px solid rgba(109,40,217,.13);border-radius:14px;padding:11px;margin-top:8px}
+.adv-label{font-size:11px;color:var(--dim);font-weight:600;margin-bottom:4px;letter-spacing:.2px}
+.adv-del{width:34px;height:34px;border:1.5px solid rgba(220,38,38,.25);border-radius:10px;background:#fff;color:var(--red);font-size:13px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s}
+.adv-del:hover{background:#fee2e2;border-color:var(--red)}
+.add-adv-btn{width:100%;padding:10px;border:1.5px dashed rgba(109,40,217,.28);border-radius:12px;background:rgba(109,40,217,.03);color:var(--p1);font-size:13px;font-weight:600;cursor:pointer;transition:background .18s;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:8px}
+.add-adv-btn:hover{background:rgba(109,40,217,.07)}
+
+/* lease result */
+.lease-result{background:linear-gradient(135deg,rgba(109,40,217,.07),rgba(37,99,235,.05));border:1.5px solid rgba(109,40,217,.16);border-radius:18px;padding:15px;margin-top:10px}
+.half-card{margin-top:10px}
+.lease-line{display:flex;justify-content:space-between;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(109,40,217,.07);font-size:13px}
+.lease-line:last-child{border-bottom:none}
+.lease-lbl{color:var(--dim);font-weight:500}
+.lease-val{font-weight:700;color:var(--text);text-align:right}
+.lease-final{display:flex;justify-content:space-between;align-items:center;padding:9px 0 3px;margin-top:4px;border-top:2px solid rgba(109,40,217,.16);font-size:15px;font-weight:800;color:var(--text)}
+.lease-final .lease-val{font-size:19px;background:var(--pg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.lease-words{font-size:11px;color:var(--dim);margin-top:3px;font-style:italic;padding-bottom:4px}
+
+/* paid status */
+.paid-bar{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.paid-btn-row{display:flex;gap:8px}
+.paid-btn{flex:1;padding:11px 10px;border:1.5px solid rgba(109,40,217,.2);border-radius:12px;background:#fff;color:var(--dim);font-size:12px;font-weight:600;cursor:pointer;transition:all .18s;text-align:center;min-height:44px}
+.paid-btn.paid{background:rgba(5,150,105,.09);border-color:rgba(5,150,105,.4);color:var(--grn)}
+.paid-btn:active{transform:scale(.97)}
+.paid-date-row{display:flex;align-items:center;gap:6px;padding:9px 11px;background:var(--bg2);border-radius:11px;border:1px solid rgba(109,40,217,.12);flex-wrap:wrap}
+.paid-date-lbl{font-size:11px;color:var(--dim);font-weight:600;flex-shrink:0}
+.paid-confirm-btn{padding:8px 14px;background:var(--pg);color:#fff;border:none;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0;min-height:36px}
+.paid-cancel-btn{padding:8px 11px;background:#fff;color:var(--dim);border:1.5px solid var(--cb);border-radius:9px;font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0;min-height:36px}
+/* interest toggle on advance */
+.adv-interest-lbl{display:flex;align-items:center;gap:7px;cursor:pointer;font-size:12px;color:var(--dim);font-weight:500;padding:7px 9px;background:var(--bg2);border-radius:9px;border:1px solid rgba(109,40,217,.1);-webkit-user-select:none;user-select:none}
+.adv-interest-lbl input[type=checkbox]{width:16px;height:16px;cursor:pointer;accent-color:var(--p1);flex-shrink:0}
+/* save/update dialog */
+#saveDialog{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500;align-items:flex-end;justify-content:center}
+#saveDialog.open{display:flex}
+#saveDialogPanel{background:#fff;border-radius:20px 20px 0 0;width:100%;max-width:430px;padding:22px 18px calc(22px + env(safe-area-inset-bottom,0px));border-top:2px solid var(--cb)}
+
+/* stale overlay */
+#out.stale{opacity:.3;pointer-events:none}
+#staleNote{display:none;text-align:center;font-size:12px;color:var(--gld);margin-top:8px;font-weight:600;padding:8px 12px;background:#fef3c7;border-radius:10px;border:1px solid rgba(217,119,6,.2)}
+#out.stale+#staleNote{display:block}
+
+/* history button */
+#histBtn{background:#fff;border:1.5px solid var(--cb);color:var(--dim);font-size:12px;font-weight:700;padding:7px 12px;border-radius:10px;cursor:pointer;display:flex;align-items:center;gap:6px;box-shadow:var(--csh);flex-shrink:0}
+#histBtn span.badge{background:var(--p1);color:#fff;border-radius:99px;font-size:10px;padding:1px 6px;min-width:16px;text-align:center}
+
+/* history drawer — white panel */
+#histOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:300}
 #histOverlay.open{display:block}
-#histDrawer{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:#111827;border-radius:20px 20px 0 0;border-top:1px solid rgba(255,255,255,0.1);z-index:301;padding:0 0 env(safe-area-inset-bottom,16px);max-height:80vh;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.4,0,.2,1);transform:translateX(-50%) translateY(100%)}
+#histDrawer{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(100%);width:100%;max-width:430px;background:#fff;border-radius:20px 20px 0 0;border-top:2px solid var(--cb);z-index:301;padding:0 0 env(safe-area-inset-bottom,16px);max-height:85vh;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.4,0,.2,1)}
 #histDrawer.open{transform:translateX(-50%) translateY(0)}
-.hist-handle{width:36px;height:4px;background:rgba(255,255,255,0.2);border-radius:99px;margin:12px auto 14px}
-.hist-head{display:flex;align-items:center;justify-content:space-between;padding:0 14px 10px;flex-shrink:0}
-.hist-title{font-size:15px;font-weight:800;color:#e5e7eb}
-.hist-close{background:none;border:none;color:#6b7280;font-size:20px;cursor:pointer;line-height:1;padding:2px 6px}
-.hist-clear{background:none;border:none;color:#ef4444;font-size:11px;font-weight:700;cursor:pointer}
-#histList{overflow-y:auto;padding:0 14px;flex:1}
-.hitem{background:#0b1220;border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:11px 13px;margin-bottom:8px;cursor:pointer;transition:border-color .15s}
-.hitem:hover{border-color:rgba(59,130,246,.4)}
-.hitem-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
-.hitem-title{font-size:13px;font-weight:700;color:#e5e7eb}
-.hitem-date{font-size:10px;color:#6b7280}
-.hitem-body{display:flex;gap:16px}
-.hitem-stat{font-size:11px;color:#94a3b8}
-.hitem-stat strong{color:#22c55e;font-weight:700}
-.hitem-del{background:none;border:none;color:#6b7280;font-size:14px;cursor:pointer;padding:0 0 0 8px;flex-shrink:0;min-width:36px;min-height:36px;display:flex;align-items:center;justify-content:center}
-.hitem-del:hover{color:#ef4444}
-#delToast{position:fixed;bottom:calc(var(--tab) + env(safe-area-inset-bottom,0px) + 16px);left:50%;transform:translateX(-50%) translateY(20px);background:#1e293b;color:#e5e7eb;border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;font-size:13px;font-weight:500;box-shadow:0 4px 24px rgba(0,0,0,.4);z-index:400;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;white-space:nowrap;max-width:90%}
+.hist-handle{width:36px;height:4px;background:rgba(120,80,240,.2);border-radius:99px;margin:12px auto 12px}
+.hist-head{display:flex;align-items:center;justify-content:space-between;padding:0 14px 10px;border-bottom:1px solid var(--cb);flex-shrink:0}
+.hist-title{font-size:15px;font-weight:800;color:var(--text)}
+.hist-close{background:none;border:none;color:var(--dim);font-size:20px;cursor:pointer;line-height:1;padding:2px 6px}
+.hist-clear{background:none;border:none;color:var(--p1);font-size:11px;font-weight:700;cursor:pointer;padding:4px 6px}
+.hist-clear.red{color:var(--red)}
+#histList{overflow-y:auto;padding:10px 14px;flex:1}
+.hitem{background:var(--bg2);border:1px solid var(--cb);border-radius:14px;padding:11px 13px;margin-bottom:8px;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.hitem:hover{border-color:rgba(109,40,217,.35);box-shadow:var(--csh)}
+.hitem-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px}
+.hitem-title{font-size:13px;font-weight:700;color:var(--text)}
+.hitem-date{font-size:10px;color:var(--dim);flex-shrink:0;padding-left:6px}
+.hitem-body{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:7px}
+.hitem-stat{font-size:11px;color:var(--dim)}
+.hitem-stat strong{color:var(--grn);font-weight:700}
+.hitem-actions{display:flex;gap:6px}
+.hitem-edit{background:var(--plight);border:none;color:var(--p1);font-size:11px;font-weight:700;cursor:pointer;padding:5px 11px;border-radius:8px;min-height:30px;transition:background .15s}
+.hitem-edit:hover{background:#ddd6fe}
+.hitem-del{background:#fef2f2;border:none;color:var(--red);font-size:11px;font-weight:700;cursor:pointer;padding:5px 11px;border-radius:8px;min-height:30px;transition:background .15s}
+.hitem-del:hover{background:#fee2e2}
+.hist-paid-dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-left:4px;background:#e0d9ff;vertical-align:middle}
+.hist-paid-dot.paid{background:var(--grn)}
+.hist-empty{text-align:center;color:var(--dim);font-size:13px;padding:32px 0}
+
+/* delete confirm toast */
+#delToast{position:fixed;bottom:calc(var(--tab) + env(safe-area-inset-bottom,0px) + 16px);left:50%;transform:translateX(-50%) translateY(20px);background:#fff;color:var(--text);border:1px solid var(--cb);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;font-size:13px;font-weight:500;box-shadow:0 4px 24px rgba(120,80,240,.15);z-index:400;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;white-space:nowrap;max-width:90%}
 #delToast.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
-#delToast .toast-cancel{background:rgba(255,255,255,0.1);color:#e5e7eb;border:none;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;min-height:32px}
-#delToast .toast-undo{background:#ef4444;color:#fff;border:none;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;min-height:32px}
-.hist-empty{text-align:center;color:#4b5563;font-size:13px;padding:32px 0}
+#delToast .toast-cancel{background:var(--bg2);color:var(--dim);border:none;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;min-height:32px}
+#delToast .toast-undo{background:var(--red);color:#fff;border:none;border-radius:8px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;min-height:32px}
 
 @media print{
-  #histBtn,#histOverlay,#histDrawer{display:none!important}
-  #t-lease .header{color:#000;font-size:18px;border-bottom:2px solid #000;padding-bottom:8px;margin-bottom:16px}
-  #t-lease .card,#t-lease .btn,#t-lease .btn2,#t-lease .btnRow,#t-lease .seg,#t-lease .segBtn,#staleNote{display:none!important}
-  #t-lease .cardResult{background:#fff!important;border:1px solid #ccc!important;border-radius:0!important;break-inside:avoid}
-  #t-lease .line{border-bottom:1px solid #eee;color:#000}
-  #t-lease .finalLine{color:#000;font-weight:800;border-top:2px solid #000;margin-top:8px;padding-top:6px}
-  #t-lease .small{color:#555}
-  #out{display:block!important}
-  #out .cardResult{border:1px solid #000!important;margin-top:12px}
+  #histBtn,#histOverlay,#histDrawer,#delToast,.paid-bar,.add-adv-btn,#staleNote{display:none!important}
+  #t-lease .card,.actrow,.actbtn,.cbtn{display:none!important}
+  #out{display:block!important;opacity:1!important;pointer-events:auto!important}
+  .lease-result{background:#fff!important;border:1px solid #ccc!important;border-radius:0!important;break-inside:avoid;margin-top:12px}
+  .lease-line{border-bottom:1px solid #eee;color:#000}
+  .lease-final{border-top:2px solid #000}
+  .lease-words{color:#555}
 }
 </style>
 </head>
@@ -540,9 +570,14 @@ select.if{
 <div class="app">
   <div class="hdr">
     <div class="hico">💎</div>
-    <div>
-      <div class="htitle">Finance Suite</div>
+    <div style="flex:1">
+      <div class="htitle">Finance Suite <span style="font-size:11px;color:var(--dim);font-weight:600;vertical-align:middle">v1.3</span></div>
       <div class="hsub">Land · Interest · EMI · Lease Finance</div>
+    </div>
+    <div style="display:flex;gap:5px;flex-shrink:0">
+      <button onclick="backupAll()" title="Backup all data to a file" style="background:#fff;border:1.5px solid var(--cb);border-radius:10px;padding:6px 9px;font-size:11px;font-weight:700;color:var(--dim);cursor:pointer;box-shadow:var(--csh);white-space:nowrap">⬇ Backup</button>
+      <button onclick="document.getElementById('restoreFile').click()" title="Restore from backup file" style="background:#fff;border:1.5px solid var(--cb);border-radius:10px;padding:6px 9px;font-size:11px;font-weight:700;color:var(--dim);cursor:pointer;box-shadow:var(--csh);white-space:nowrap">⬆ Restore</button>
+      <input type="file" id="restoreFile" accept=".json" style="display:none" onchange="restoreAll(this)">
     </div>
   </div>
 
@@ -1152,87 +1187,105 @@ select.if{
   <!-- ═══════════════ LEASE FINANCE TAB ═══════════════ -->
   <div id="t-lease" class="tab">
 
-  <div class="header">🌾 Lease Finance Pro
-    <button id="histBtn" onclick="openHist()">🕐 History <span class="badge" id="histCount">0</span></button>
-  </div>
-
   <!-- History Drawer -->
   <div id="histOverlay" onclick="closeHist()"></div>
   <div id="histDrawer">
     <div class="hist-handle"></div>
     <div class="hist-head">
       <span class="hist-title">Saved Invoices</span>
-      <div style="display:flex;align-items:center;gap:8px">
+      <div style="display:flex;align-items:center;gap:4px">
         <button class="hist-clear" onclick="exportHist()">⬇ Export</button>
-        <button class="hist-clear" onclick="document.getElementById('importFile').click()" style="color:#3b82f6">⬆ Import</button>
+        <button class="hist-clear" onclick="document.getElementById('importFile').click()">⬆ Import</button>
         <input type="file" id="importFile" accept=".json" style="display:none" onchange="importHist(this)">
-        <button class="hist-clear" onclick="clearAllHist()">Clear all</button>
+        <button class="hist-clear red" onclick="clearAllHist()">Clear all</button>
         <button class="hist-close" onclick="closeHist()">✕</button>
       </div>
     </div>
     <div id="histList"></div>
   </div>
 
-  <div class="card">
-  <div class="grid" style="margin-bottom:8px">
-  <input id="lessee" placeholder="Lessee Name">
-  <input id="year" placeholder="Year (e.g. 2026)">
-  </div>
-  <div class="grid">
-  <input id="land" placeholder="Land">
-  <select id="unit">
-  <option value="acre">Acre</option>
-  <option value="kanal" selected>Kanal</option>
-  </select>
-  </div>
-
-  <div style="margin-top:8px" class="grid">
-  <div>
-    <div style="font-size:10px;color:#6b7280;margin-bottom:4px;font-weight:600;letter-spacing:.3px">₹ / ACRE / YEAR</div>
-    <input id="rate" value="1,00,000" placeholder="e.g. 1,00,000" type="text" inputmode="numeric" oninput="fmtRate(this)">
-  </div>
-  <select id="mode">
-  <option value="yearly">Yearly</option>
-  <option value="half">Half Yearly</option>
-  </select>
-  </div>
+  <div class="lhdr">
+    <div class="lhdr-title">🌾 Lease Finance Pro</div>
+    <button id="histBtn" onclick="openHist()">🕐 History <span class="badge" id="histCount">0</span></button>
   </div>
 
   <div class="card">
-  <div class="seg">
-  <button class="segBtn active" onclick="setMode('none',this)">Simple</button>
-  <button class="segBtn" onclick="setMode('split',this)">Split</button>
-  <button class="segBtn" onclick="setMode('second',this)">2nd Inst.</button>
-  <button class="segBtn" onclick="setMode('first',this)">1st Inst.</button>
-  </div>
+    <div class="ct" style="margin-bottom:10px">Lease Details</div>
+    <div class="irow">
+      <div class="ig"><div class="ilbl">Lessee Name</div><input id="lessee" class="if" placeholder="Lessee Name" oninput="markStale()"></div>
+      <div class="ig"><div class="ilbl">Year</div><input id="year" class="if" placeholder="e.g. 2026" oninput="markStale()"></div>
+    </div>
+    <div class="irow">
+      <div class="ig"><div class="ilbl">Land Area</div><input id="land" class="if" placeholder="e.g. 4" oninput="markStale()"></div>
+      <div class="ig"><div class="ilbl">Unit</div>
+        <select id="unit" class="if" onchange="markStale()">
+          <option value="acre">Acre</option>
+          <option value="kanal" selected>Kanal</option>
+        </select>
+      </div>
+    </div>
+    <div class="irow">
+      <div class="ig">
+        <div class="ilbl">₹ / Acre / Year</div>
+        <input id="rate" value="1,00,000" class="if" placeholder="e.g. 1,00,000" type="text" inputmode="numeric" oninput="fmtRate(this);markStale()">
+      </div>
+      <div class="ig">
+        <div class="ilbl">Payment Mode</div>
+        <select id="mode" class="if" onchange="markStale()">
+          <option value="yearly">Yearly</option>
+          <option value="half">Half Yearly</option>
+        </select>
+      </div>
+    </div>
   </div>
 
   <div class="card">
-  <div class="grid">
-  <select id="it">
-  <option value="rs100">Rs / 100 / month</option>
-  <option value="percent">% yearly</option>
-  </select>
-  <input id="lfp_ir" placeholder="Rate">
-  </div>
+    <div class="ct" style="margin-bottom:10px">Interest on Advance</div>
+    <div class="irow">
+      <div class="ig">
+        <div class="ilbl">Interest Type</div>
+        <select id="it" class="if" onchange="markStale()">
+          <option value="rs100">Rs / 100 / month</option>
+          <option value="percent">% yearly</option>
+        </select>
+      </div>
+      <div class="ig">
+        <div class="ilbl">Rate</div>
+        <input id="lfp_ir" class="if" placeholder="e.g. 2" oninput="markStale()">
+      </div>
+    </div>
   </div>
 
   <div class="card">
-  <div id="adv"></div>
-  <button class="btn" onclick="addAdv()">+ Add Advance</button>
+    <div class="ct" style="margin-bottom:4px">Advances</div>
+    <div class="info">Each advance can specify which half-yearly payment it deducts from.</div>
+    <div id="adv"></div>
+    <button class="add-adv-btn" onclick="addAdv()">＋ Add Advance</button>
   </div>
 
-  <div class="btnRow">
-  <button class="btn2" onclick="printOnly()">🖨 Print</button>
-  <button class="btn2" onclick="shareWA()" style="background:#15803d;color:#bbf7d0;">💬 WhatsApp</button>
-  <button class="btn2" id="copyBtn" onclick="copyInvoice()">📋 Copy</button>
-  <button class="btn2" onclick="resetAll()" style="background:#7f1d1d;color:#fca5a5;">Reset</button>
+  <div class="actrow">
+    <button class="actbtn" onclick="printOnly()">🖨 Print</button>
+    <button class="actbtn" onclick="shareWA()" style="color:var(--grn);border-color:rgba(5,150,105,.25)">💬 WhatsApp</button>
+    <button class="actbtn" id="copyBtn" onclick="copyInvoice()">📋 Copy</button>
+    <button class="actbtn" onclick="resetAll()" style="color:var(--red);border-color:rgba(220,38,38,.2)">Reset</button>
   </div>
 
-  <button class="btn" onclick="calc()">Generate Invoice</button>
+  <button class="cbtn p" onclick="handleGenerate()">Generate Invoice</button>
 
   <div id="out"></div>
   <div id="staleNote">⚠ Inputs changed — tap Generate Invoice to update</div>
+  <div id="paidBar" style="display:none"></div>
+
+  <!-- Save / Update confirmation dialog -->
+  <div id="saveDialog" onclick="if(event.target===this)closeSaveDialog()">
+    <div id="saveDialogPanel">
+      <div style="font-size:16px;font-weight:800;color:var(--text);margin-bottom:6px">💾 Save Invoice</div>
+      <div style="font-size:13px;color:var(--dim);margin-bottom:18px;line-height:1.6">This invoice is already saved. Update the existing entry or save as a separate new one?</div>
+      <button onclick="calcUpdate()" class="cbtn p" style="margin-bottom:10px">Update Existing Entry</button>
+      <button onclick="calcNew()" style="width:100%;padding:13px;background:var(--bg2);color:var(--p1);border:1.5px solid rgba(109,40,217,.2);border-radius:13px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:10px">Save as New Entry</button>
+      <button onclick="closeSaveDialog()" style="width:100%;padding:11px;background:none;color:var(--dim);border:none;border-radius:13px;font-size:13px;font-weight:600;cursor:pointer">Cancel</button>
+    </div>
+  </div>
 
   </div>
 
@@ -2628,6 +2681,8 @@ window.addEventListener('DOMContentLoaded',()=>{
 <script>
 
 const HIST_KEY='lfp_history';
+const APP_VERSION='1.3';
+// REPLACED_MARKER — full rewrite below
 
 function loadHist(){return JSON.parse(localStorage.getItem(HIST_KEY)||'[]')}
 function saveHist(h){localStorage.setItem(HIST_KEY,JSON.stringify(h))}
@@ -2635,15 +2690,14 @@ function saveHist(h){localStorage.setItem(HIST_KEY,JSON.stringify(h))}
 function pushHist(entry){
   let h=loadHist();
   h.unshift(entry);
-  if(h.length>10)h=h.slice(0,10);
+  if(h.length>50)h=h.slice(0,50);
   saveHist(h);
   updHistBadge();
   if(document.getElementById('histDrawer').classList.contains('open'))renderHistList();
 }
 
 function updHistBadge(){
-  const h=loadHist();
-  document.getElementById('histCount').textContent=h.length;
+  document.getElementById('histCount').textContent=loadHist().length;
 }
 
 function openHist(){
@@ -2684,13 +2738,13 @@ function importHist(input){
       const data=JSON.parse(e.target.result);
       if(!Array.isArray(data))throw new Error('Invalid format');
       const existing=loadHist();
-      const merged=[...data,...existing];
       const seen=new Set();
+      const merged=[...data,...existing];
       const deduped=merged.filter(item=>{
         const key=`${item.land}_${item.year}_${item.date}_${item.final}`;
         if(seen.has(key))return false;
         seen.add(key);return true;
-      }).slice(0,10);
+      }).slice(0,50);
       saveHist(deduped);
       updHistBadge();
       renderHistList();
@@ -2708,7 +2762,7 @@ function deleteHistItem(idx){
   const h=loadHist();
   const e=h[idx];
   if(!e)return;
-  _delPending={idx:idx,entry:e};
+  _delPending={idx,entry:e};
   const t=document.getElementById('delToast');
   t.querySelector('.toast-msg').textContent='Delete "'+(e.lessee||'—')+' · '+(e.year||'—')+'"?';
   t.classList.add('show');
@@ -2735,12 +2789,17 @@ function renderHistList(){
     el.innerHTML='<div class="hist-empty">No saved invoices yet.<br>Generate one to save it here.</div>';
     return;
   }
-  el.innerHTML=h.map((e,i)=>`
-    <div class="hitem" onclick="loadHistItem(${i})">
+  el.innerHTML=h.map((e,i)=>{
+    const paid=e.paid||{};
+    const isHalf=e.payMode==='half';
+    const paidDots=isHalf
+      ?`<span class="hist-paid-dot${paid.first?' paid':''}" title="1st Half${paid.first&&paid.firstDate?' · '+fmtDate(paid.firstDate):''}"></span><span class="hist-paid-dot${paid.second?' paid':''}" title="2nd Half${paid.second&&paid.secondDate?' · '+fmtDate(paid.secondDate):''}"></span>`
+      :`<span class="hist-paid-dot${paid.full?' paid':''}" title="${paid.full?'Paid'+(paid.fullDate?' · '+fmtDate(paid.fullDate):''):'Unpaid'}"></span>`;
+    return `<div class="hitem" onclick="loadHistItem(${i})">
       <div class="hitem-top">
-        <div>
-          <div class="hitem-title">${e.lessee||'—'} · ${e.year||'—'}</div>
-          <div style="font-size:10px;color:#6b7280;margin-top:2px">${e.land} ${e.unitLbl||e.unit}</div>
+        <div style="flex:1">
+          <div class="hitem-title">${e.lessee||'—'} · ${e.year||'—'} ${paidDots}</div>
+          <div style="font-size:10px;color:var(--dim);margin-top:2px">${e.land} ${e.unitLbl||e.unit} · ${isHalf?'Half Yearly':'Yearly'}</div>
         </div>
         <span class="hitem-date">${e.date}</span>
       </div>
@@ -2749,25 +2808,49 @@ function renderHistList(){
         <div class="hitem-stat">Payable <strong>₹${e.final}</strong></div>
         ${e.adv?`<div class="hitem-stat">Adv <strong>₹${e.adv}</strong></div>`:''}
       </div>
-      <button class="hitem-del" onclick="event.stopPropagation();deleteHistItem(${i})" title="Delete">🗑</button>
-    </div>`).join('');
+      <div class="hitem-actions">
+        <button class="hitem-edit" onclick="event.stopPropagation();editHistItem(${i})">✏ Edit</button>
+        <button class="hitem-del" onclick="event.stopPropagation();deleteHistItem(${i})">🗑 Delete</button>
+      </div>
+    </div>`;
+  }).join('');
 }
 
+let _editingIdx=null;
+let _currentHistIdx=null;
+let _pendingPaidKey=null;
+
 function loadHistItem(idx){
+  _editingIdx=null;
+  _currentHistIdx=idx;
+  _loadData(idx);
+}
+
+function editHistItem(idx){
+  _editingIdx=idx;
+  _currentHistIdx=idx;
+  _loadData(idx);
+}
+
+function updateGenerateBtn(){
+  const btn=document.querySelector('#t-lease .cbtn');
+  if(!btn)return;
+  btn.textContent=_editingIdx!==null?'💾 Update Invoice':'Generate Invoice';
+}
+
+function _loadData(idx){
   const e=loadHist()[idx];
   if(!e)return;
-
   const hasData=
     document.getElementById('lessee').value.trim()||
     document.getElementById('land').value.trim()||
     document.getElementById('year').value.trim()||
     document.getElementById('out').innerHTML.trim();
-
-  if(hasData && !confirm('Load this invoice? Current fields and results will be overwritten.'))return;
+  if(hasData&&!confirm('Load this invoice? Current fields and results will be overwritten.'))return;
 
   document.getElementById('lessee').value=e.lessee||'';
   document.getElementById('land').value=e.land||'';
-  document.getElementById('unit').value=e.unit||'acre';
+  document.getElementById('unit').value=e.unit||'kanal';
   document.getElementById('year').value=e.year==='—'?'':e.year;
   document.getElementById('rate').value=e.rate||'1,00,000';
   fmtRate(document.getElementById('rate'));
@@ -2775,39 +2858,33 @@ function loadHistItem(idx){
   document.getElementById('it').value=e.it||'rs100';
   document.getElementById('lfp_ir').value=e.ir||'';
 
-  leaseMode=e.advMode||'none';
-  document.querySelectorAll('#t-lease .segBtn').forEach(b=>{
-    b.classList.remove('active');
-    const v=b.getAttribute('onclick').match(/'([^']+)'/)?.[1];
-    if(v===leaseMode)b.classList.add('active');
-  });
-
   document.getElementById('adv').innerHTML='';
   const rows=e.advRows||[];
   if(rows.length===0){
     addAdv();
   } else {
     rows.forEach(r=>{
-      let d=document.createElement('div');
-      d.className='advGrid';
-      d.innerHTML=`
-        <input type="text" inputmode="numeric" placeholder="Amount" oninput="fmtRate(this)" value="${r.amt||''}">
-        <input type="date" value="${r.s||''}">
-        <input type="date" value="${r.e||''}">
-        <button onclick="this.parentNode.remove()" style="background:#ef4444;border:none;color:white;border-radius:8px;padding:10px;">X</button>`;
+      const d=document.createElement('div');
+      d.className='adv-card';
+      d.innerHTML=_advCardHtml(r.amt||'',r.s||'',r.e||'',(r.comment||'').replace(/"/g,'&quot;'),r.chargeInterest!==false);
       document.getElementById('adv').appendChild(d);
-      fmtRate(d.children[0]);
+      // Map old 'split' or 'none' entries → 'none' (Both Halves); preserve 'first'/'second'
+      const rawMode=r.mode||(e.advMode||'second');
+      d.querySelector('.adv-mode').value=(rawMode==='split'||rawMode==='none')?'none':rawMode;
+      d.querySelector('.adv-interest-chk').checked=r.chargeInterest!==false;
+      fmtRate(d.querySelector('.adv-amt'));
     });
   }
 
-  document.getElementById('out').innerHTML=e.html;
+  document.getElementById('out').innerHTML=e.html||'';
   document.getElementById('out').classList.remove('stale');
   _leaseGenerated=true;
   closeHist();
+  updateGenerateBtn();
+  renderPaidBar();
   setTimeout(()=>document.getElementById('out').scrollIntoView({behavior:'smooth',block:'nearest'}),300);
 }
 
-let leaseMode="none";
 let _leaseGenerated=false;
 
 function markStale(){
@@ -2815,22 +2892,47 @@ function markStale(){
   document.getElementById("out").classList.add("stale");
 }
 
-function setMode(v,btn){
-  leaseMode=v;
-  document.querySelectorAll("#t-lease .segBtn").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");
-  markStale();
+function _advCardHtml(amt,s,e,comment,chargeInterest){
+  if(chargeInterest===undefined)chargeInterest=true;
+  return `<div style="display:flex;gap:7px;align-items:flex-end;margin-bottom:8px">
+  <div style="flex:1.2">
+    <div class="adv-label">Amount (₹)</div>
+    <input type="text" inputmode="numeric" class="if adv-amt" placeholder="0" oninput="fmtRate(this);markStale()" value="${amt}">
+  </div>
+  <div style="flex:1.2">
+    <div class="adv-label">Deduct From (Half Yearly)</div>
+    <select class="if adv-mode" onchange="markStale()">
+      <option value="second">2nd Half Only</option>
+      <option value="first">1st Half Only</option>
+      <option value="none">Both Halves</option>
+    </select>
+  </div>
+  <button class="adv-del" onclick="this.closest('.adv-card').remove();markStale()">✕</button>
+</div>
+<div style="margin-bottom:8px">
+  <div class="adv-label">Comment / Note (optional)</div>
+  <input type="text" class="if adv-comment" placeholder="e.g. For seeds, machinery rent…" oninput="markStale()" value="${comment}">
+</div>
+<div style="display:flex;gap:7px;margin-bottom:8px">
+  <div style="flex:1">
+    <div class="adv-label">From Date</div>
+    <input type="date" class="if adv-start" onchange="markStale()" value="${s}">
+  </div>
+  <div style="flex:1">
+    <div class="adv-label">To Date</div>
+    <input type="date" class="if adv-end" onchange="markStale()" value="${e}">
+  </div>
+</div>
+<label class="adv-interest-lbl">
+  <input type="checkbox" class="adv-interest-chk" ${chargeInterest?'checked':''} onchange="markStale()">
+  Charge Interest on this advance
+</label>`;
 }
 
 function addAdv(){
-  let d=document.createElement("div");
-  d.className="advGrid";
-  d.innerHTML=`
-  <input type="text" inputmode="numeric" placeholder="Amount" oninput="fmtRate(this)">
-  <input type="date">
-  <input type="date">
-  <button onclick="this.parentNode.remove()" style="background:#ef4444;border:none;color:white;border-radius:8px;padding:10px;">X</button>
-  `;
+  const d=document.createElement("div");
+  d.className="adv-card";
+  d.innerHTML=_advCardHtml('','','','');
   document.getElementById("adv").appendChild(d);
 }
 
@@ -2845,8 +2947,7 @@ function fmtRate(el){
   let s=n.toString();
   let result='';
   if(s.length>3){
-    result=','+s.slice(-3);
-    s=s.slice(0,-3);
+    result=','+s.slice(-3);s=s.slice(0,-3);
     while(s.length>2){result=','+s.slice(-2)+result;s=s.slice(0,-2);}
     result=s+result;
   } else result=s;
@@ -2857,30 +2958,34 @@ function fmtRate(el){
   el.setSelectionRange(cur+diff,cur+diff);
 }
 
+function fmtDate(d){
+  if(!d)return'';
+  try{return new Date(d).toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});}
+  catch(e){return d;}
+}
+
 function formatAmt(n){
-  let s=Math.round(n).toString();
+  const rounded=Math.round(n);
+  const isNeg=rounded<0;
+  const abs=Math.abs(rounded);
+  let s=abs.toString();
   let result='';
   if(s.length>3){
-    result=','+s.slice(-3);
-    s=s.slice(0,-3);
-    while(s.length>2){
-      result=','+s.slice(-2)+result;
-      s=s.slice(0,-2);
-    }
+    result=','+s.slice(-3);s=s.slice(0,-3);
+    while(s.length>2){result=','+s.slice(-2)+result;s=s.slice(0,-2);}
     result=s+result;
-  } else {
-    result=s;
-  }
-  let lakh=Math.round(n)/100000;
-  let label=lakh>=0.01?' ('+parseFloat(lakh.toFixed(3))+' Lakh)':'';
-  return '₹'+result+label;
+  } else result=s;
+  let label='';
+  if(abs>=100000)     label=' ('+parseFloat((abs/100000).toFixed(2))+' Lakh)';
+  else if(abs>=1000)  label=' ('+parseFloat((abs/1000).toFixed(2))+' Thousand)';
+  else if(abs>=100)   label=' ('+parseFloat((abs/100).toFixed(1))+' Hundred)';
+  return (isNeg?'-':'')+'₹'+result+label;
 }
 
 function numberToWords(num){
   const a=['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten',
   'Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
   const b=['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
-
   function w(n){
     if(n===0)return'';
     if(n<20)return a[n]+' ';
@@ -2894,20 +2999,12 @@ function numberToWords(num){
 }
 
 function printOnly(){
-  let out=document.getElementById("out");
-  if(!out.innerHTML.trim()){
-    alert("Generate an invoice first before printing.");
-    return;
-  }
+  if(!document.getElementById("out").innerHTML.trim()){alert("Generate an invoice first before printing.");return;}
   window.print();
 }
 
 function shareWA(){
-  if(!document.getElementById("out").innerHTML.trim()){
-    alert("Generate an invoice first before sharing.");
-    return;
-  }
-
+  if(!document.getElementById("out").innerHTML.trim()){alert("Generate an invoice first before sharing.");return;}
   let land=parseFloat(document.getElementById("land").value||0);
   let unit=document.getElementById("unit").value;
   let acres=unit==="acre"?land:land/8;
@@ -2916,30 +3013,27 @@ function shareWA(){
   let lessee=document.getElementById("lessee").value.trim()||'—';
   let rate=parseFloat((document.getElementById("rate").value||'0').replace(/,/g,''));
   let yearly=acres*rate;
-
   let type=document.getElementById("it").value;
   let ir=parseFloat(document.getElementById("lfp_ir").value||0);
-  let totalAdv=0,totalInt=0;
-  let advLines=[];
-
-  document.querySelectorAll(".advGrid").forEach((r,i)=>{
-    let amt=parseFloat((r.children[0].value||'0').replace(/,/g,''));
-    let s=r.children[1].value;
-    let e=r.children[2].value;
+  let totalAdv=0,totalInt=0,advLines=[];
+  document.querySelectorAll(".adv-card").forEach(r=>{
+    let amt=parseFloat((r.querySelector('.adv-amt').value||'0').replace(/,/g,''));
+    let s=r.querySelector('.adv-start').value,e=r.querySelector('.adv-end').value;
+    let comment=r.querySelector('.adv-comment').value.trim();
+    let chkInt=r.querySelector('.adv-interest-chk').checked;
     if(!amt||!s||!e)return;
     let d=Math.max(0,(new Date(e)-new Date(s))/(1000*60*60*24));
     let m=d/30;
-    let interest=type==="rs100"?(amt/100)*ir*m:(amt*ir*m)/(12*100);
-    totalAdv+=amt;
-    totalInt+=interest;
-    advLines.push(`  • Advance ${advLines.length+1}: ${formatAmt(amt)} | ${s} → ${e} (${Math.round(d)} days) | Interest: ${formatAmt(Math.round(interest))}`);
+    let interest=chkInt?(type==="rs100"?(amt/100)*ir*m:(amt*ir*m)/(12*100)):0;
+    totalAdv+=amt;totalInt+=interest;
+    let intStr=chkInt?`Interest: ${formatAmt(Math.round(interest))}`:'No Interest';
+    let line=`  • Advance ${advLines.length+1}: ${formatAmt(amt)} | ${s} → ${e} (${Math.round(d)} days) | ${intStr}`;
+    if(comment)line+=`\n    📝 ${comment}`;
+    advLines.push(line);
   });
-
   let final=yearly-totalAdv+totalInt;
   let payMode=document.getElementById("mode").value==="half"?"Half Yearly":"Yearly";
-
-  let msg=
-`🌾 *Lease Invoice*
+  let msg=`🌾 *Lease Invoice*
 ━━━━━━━━━━━━━━━━
 👤 *Lessee:* ${lessee}
 📅 *Year:* ${year}
@@ -2952,16 +3046,11 @@ ${advLines.length?advLines.join('\n')+`\n  Total Advance: ${formatAmt(totalAdv)}
 ━━━━━━━━━━━━━━━━
 ✅ *Final Payable: ${formatAmt(final)}*
    ${numberToWords(final)}`;
-
-  let url='https://wa.me/?text='+encodeURIComponent(msg);
-  window.open(url,'_blank');
+  window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
 }
 
 function copyInvoice(){
-  if(!document.getElementById("out").innerHTML.trim()){
-    alert("Generate an invoice first before copying.");
-    return;
-  }
+  if(!document.getElementById("out").innerHTML.trim()){alert("Generate an invoice first before copying.");return;}
   let land=parseFloat(document.getElementById("land").value||0);
   let unit=document.getElementById("unit").value;
   let acres=unit==="acre"?land:land/8;
@@ -2972,21 +3061,25 @@ function copyInvoice(){
   let yearly=acres*rate;
   let type=document.getElementById("it").value;
   let ir=parseFloat(document.getElementById("lfp_ir").value||0);
-  let totalAdv=0,totalInt=0;
-  let advLines=[];
-  document.querySelectorAll(".advGrid").forEach(r=>{
-    let amt=parseFloat((r.children[0].value||'0').replace(/,/g,''));
-    let s=r.children[1].value,e=r.children[2].value;
+  let totalAdv=0,totalInt=0,advLines=[];
+  document.querySelectorAll(".adv-card").forEach(r=>{
+    let amt=parseFloat((r.querySelector('.adv-amt').value||'0').replace(/,/g,''));
+    let s=r.querySelector('.adv-start').value,e=r.querySelector('.adv-end').value;
+    let comment=r.querySelector('.adv-comment').value.trim();
+    let chkInt=r.querySelector('.adv-interest-chk').checked;
     if(!amt||!s||!e)return;
     let d=Math.max(0,(new Date(e)-new Date(s))/(1000*60*60*24));
-    let interest=type==="rs100"?(amt/100)*ir*(d/30):(amt*ir*(d/30))/(12*100);
+    let m=d/30;
+    let interest=chkInt?(type==="rs100"?(amt/100)*ir*m:(amt*ir*m)/(12*100)):0;
     totalAdv+=amt;totalInt+=interest;
-    advLines.push(`  • Advance ${advLines.length+1}: ${formatAmt(amt)} | ${s} → ${e} (${Math.round(d)} days) | Interest: ${formatAmt(Math.round(interest))}`);
+    let intStr=chkInt?`Interest: ${formatAmt(Math.round(interest))}`:'No Interest';
+    let line=`  • Advance ${advLines.length+1}: ${formatAmt(amt)} | ${s} → ${e} (${Math.round(d)} days) | ${intStr}`;
+    if(comment)line+=`\n    📝 ${comment}`;
+    advLines.push(line);
   });
   let final=yearly-totalAdv+totalInt;
   let payMode=document.getElementById("mode").value==="half"?"Half Yearly":"Yearly";
-  let msg=
-`🌾 Lease Invoice
+  let msg=`🌾 Lease Invoice
 ━━━━━━━━━━━━━━━━
 👤 Lessee: ${lessee}
 📅 Year: ${year}
@@ -2999,126 +3092,140 @@ ${advLines.length?advLines.join('\n')+`\n  Total Advance: ${formatAmt(totalAdv)}
 ━━━━━━━━━━━━━━━━
 ✅ Final Payable: ${formatAmt(final)}
    ${numberToWords(final)}`;
-
   navigator.clipboard.writeText(msg).then(()=>{
     const btn=document.getElementById('copyBtn');
     btn.textContent='✅ Copied!';
-    btn.style.background='#1d4ed8';
-    btn.style.color='#bfdbfe';
-    setTimeout(()=>{btn.textContent='📋 Copy';btn.style.background='';btn.style.color='';},2000);
+    setTimeout(()=>{btn.textContent='📋 Copy';},2000);
   }).catch(()=>alert('Copy failed — please try again.'));
+}
+
+function handleGenerate(){
+  if(_editingIdx!==null){showSaveDialog();}
+  else{calc();}
+}
+
+function showSaveDialog(){
+  document.getElementById('saveDialog').classList.add('open');
+}
+
+function closeSaveDialog(){
+  document.getElementById('saveDialog').classList.remove('open');
+}
+
+function calcNew(){
+  closeSaveDialog();
+  _editingIdx=null;
+  calc();
+}
+
+function calcUpdate(){
+  closeSaveDialog();
+  calc();
 }
 
 function calc(){
   document.getElementById("out").classList.remove("stale");
   _leaseGenerated=true;
 
-  let land=parseFloat(document.getElementById("land").value||0);
-  let unit=document.getElementById("unit").value;
-  let year=document.getElementById("year").value;
-  let rate=parseFloat((document.getElementById("rate").value||'0').replace(/,/g,''));
+  const land=parseFloat(document.getElementById("land").value||0);
+  const unit=document.getElementById("unit").value;
+  const year=document.getElementById("year").value;
+  const rate=parseFloat((document.getElementById("rate").value||'0').replace(/,/g,''));
+  const acres=unit==="acre"?land:land/8;
+  const yearly=acres*rate;
+  const half=yearly/2;
+  const type=document.getElementById("it").value;
+  const ir=parseFloat(document.getElementById("lfp_ir").value||0);
+  const isHalf=document.getElementById("mode").value==="half";
 
-  let acres=unit==="acre"?land:land/8;
-  let yearly=acres*rate;
-  let half=yearly/2;
-
-  let type=document.getElementById("it").value;
-  let ir=parseFloat(document.getElementById("lfp_ir").value||0);
-
-  let totalAdv=0,totalInt=0;
-  let advList=[];
-
-  document.querySelectorAll(".advGrid").forEach(r=>{
-    let amt=parseFloat((r.children[0].value||'0').replace(/,/g,''));
-    let s=r.children[1].value;
-    let e=r.children[2].value;
+  let totalAdv=0,totalInt=0,advList=[];
+  document.querySelectorAll(".adv-card").forEach(r=>{
+    const amt=parseFloat((r.querySelector('.adv-amt').value||'0').replace(/,/g,''));
+    const s=r.querySelector('.adv-start').value;
+    const e=r.querySelector('.adv-end').value;
     if(!amt||!s||!e)return;
-
-    let d=leaseDays(s,e);
-    let m=d/30;
-
-    let interest = type==="rs100"
-      ?(amt/100)*ir*m
-      :(amt*ir*m)/(12*100);
-
-    totalAdv+=amt;
-    totalInt+=interest;
-
-    advList.push({amt,interest:Math.round(interest),days:Math.round(d),s,e});
+    const d=leaseDays(s,e);
+    const m=d/30;
+    const chargeInterest=r.querySelector('.adv-interest-chk').checked;
+    const interest=chargeInterest?(type==="rs100"?(amt/100)*ir*m:(amt*ir*m)/(12*100)):0;
+    totalAdv+=amt;totalInt+=interest;
+    advList.push({
+      amt,interest:Math.round(interest),days:Math.round(d),s,e,
+      chargeInterest,
+      advMode:r.querySelector('.adv-mode').value,
+      comment:r.querySelector('.adv-comment').value.trim()
+    });
   });
 
-  let final=yearly-totalAdv+totalInt;
+  const final=yearly-totalAdv+totalInt;
 
-  let firstHalf=half;
-  let secondHalf=half;
-
-  if(leaseMode==="split"){
-    firstHalf=half-totalAdv/2+totalInt/2;
-    secondHalf=half-totalAdv/2+totalInt/2;
-  }
-  if(leaseMode==="second"){
-    firstHalf=half;
-    secondHalf=half-totalAdv+totalInt;
-  }
-  if(leaseMode==="first"){
-    firstHalf=half-totalAdv+totalInt;
-    secondHalf=half;
+  // Per-advance half-yearly deduction
+  let firstHalf=half,secondHalf=half;
+  if(isHalf){
+    advList.forEach(a=>{
+      const net=a.amt-a.interest;
+      if(a.advMode==='first')firstHalf-=net;
+      else if(a.advMode==='second')secondHalf-=net;
+      else{firstHalf-=net/2;secondHalf-=net/2;}
+    });
   }
 
-  let kanals=(acres*8).toFixed(2);
-  let lessee=document.getElementById("lessee").value.trim();
-  let html=`
-<div class="cardResult">
-${lessee?`<div class="line"><span>Lessee</span><span style="font-weight:700">${lessee}</span></div>`:''}
-<div class="line"><span>Land</span><span>${acres.toFixed(2)} Acre · ${kanals} Kanal</span></div>
-<div class="line"><span>Year</span><span>${year}</span></div>
-<div class="line"><span>Yearly Rent</span><span>${formatAmt(yearly)}</span></div>
-<div class="small">${numberToWords(yearly)}</div>
-${advList.length===0?`
-<div class="line"><span>Advance</span><span>${formatAmt(0)}</span></div>
-<div class="line"><span>Interest</span><span>${formatAmt(0)}</span></div>
-`:advList.map((a,i)=>`
-<div class="line" style="flex-direction:column;align-items:flex-start;gap:2px;padding:6px 0">
-  <div style="display:flex;justify-content:space-between;width:100%">
-    <span style="font-weight:600">Advance ${advList.length>1?i+1:''}</span>
-    <span>${formatAmt(a.amt)}</span>
+  const kanals=(acres*8).toFixed(2);
+  const lessee=document.getElementById("lessee").value.trim();
+  const modeLabel={none:'Both Halves',first:'1st Half Only',second:'2nd Half Only'};
+
+  let html=`<div class="lease-result">
+${lessee?`<div class="lease-line"><span class="lease-lbl">Lessee</span><span class="lease-val">${lessee}</span></div>`:''}
+<div class="lease-line"><span class="lease-lbl">Land</span><span class="lease-val">${acres.toFixed(2)} Acre · ${kanals} Kanal</span></div>
+<div class="lease-line"><span class="lease-lbl">Year</span><span class="lease-val">${year}</span></div>
+<div class="lease-line"><span class="lease-lbl">Yearly Rent</span><span class="lease-val">${formatAmt(yearly)}</span></div>
+<div class="lease-words">${numberToWords(yearly)}</div>
+${advList.length===0?`<div class="lease-line"><span class="lease-lbl">Advance</span><span class="lease-val">₹0</span></div>
+<div class="lease-line"><span class="lease-lbl">Interest</span><span class="lease-val">₹0</span></div>`
+:advList.map((a,i)=>`<div class="lease-line" style="flex-direction:column;align-items:stretch;gap:2px;padding:7px 0">
+  <div style="display:flex;justify-content:space-between">
+    <span style="font-weight:700;color:var(--text)">Advance${advList.length>1?' '+(i+1):''}</span>
+    <span class="lease-val">${formatAmt(a.amt)}</span>
   </div>
-  <div style="display:flex;justify-content:space-between;width:100%;font-size:11px;color:#94a3b8">
+  ${a.comment?`<div style="font-size:11px;color:var(--p1);font-weight:500">📝 ${a.comment}</div>`:''}
+  <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--dim)">
     <span>${a.s} → ${a.e} (${a.days} days)</span>
-    <span>Interest: ${formatAmt(a.interest)}</span>
+    <span>${a.chargeInterest?`Interest: ${formatAmt(a.interest)}`:'No Interest'}</span>
   </div>
-</div>`).join('')}
-<div class="line" style="font-size:11px;color:#94a3b8"><span>Total Advance</span><span>${formatAmt(totalAdv)}</span></div>
-<div class="line" style="font-size:11px;color:#94a3b8"><span>Total Interest</span><span>${formatAmt(totalInt)}</span></div>
-<div class="finalLine"><span>Final Payable</span><span>${formatAmt(final)}</span></div>
-<div class="small">${numberToWords(final)}</div>
-</div>
-`;
+  ${isHalf?`<div style="font-size:11px;color:var(--p1);font-weight:600">↳ Deduct from: ${modeLabel[a.advMode]||'Both halves'}</div>`:''}`
+).join('')}
+<div class="lease-line" style="font-size:12px;opacity:.8"><span class="lease-lbl">Total Advance</span><span class="lease-val">${formatAmt(totalAdv)}</span></div>
+<div class="lease-line" style="font-size:12px;opacity:.8"><span class="lease-lbl">Total Interest</span><span class="lease-val">${formatAmt(totalInt)}</span></div>
+<div class="lease-final"><span>Final Payable</span><span class="lease-val">${formatAmt(final)}</span></div>
+<div class="lease-words">${numberToWords(final)}</div>
+</div>`;
 
-  if(document.getElementById("mode").value==="half"){
-    html+=`
-<div class="cardResult">
-<div class="line"><span>First Half</span><span>${formatAmt(firstHalf)}</span></div>
-<div class="line"><span>Second Half</span><span>${formatAmt(secondHalf)}</span></div>
-</div>
-`;
+  if(isHalf){
+    html+=`<div class="lease-result half-card">
+<div class="lease-line"><span class="lease-lbl">First Half Payable</span><span class="lease-val" style="background:var(--pg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">${formatAmt(firstHalf)}</span></div>
+<div class="lease-line"><span class="lease-lbl">Second Half Payable</span><span class="lease-val" style="background:var(--pg);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">${formatAmt(secondHalf)}</span></div>
+</div>`;
   }
 
   document.getElementById("out").innerHTML=html;
 
-  const now=new Date();
-  const dateStr=now.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
-
+  // Snapshot advances
   const advSnap=[];
-  document.querySelectorAll(".advGrid").forEach(r=>{
+  document.querySelectorAll(".adv-card").forEach(r=>{
     advSnap.push({
-      amt:r.children[0].value,
-      s:r.children[1].value,
-      e:r.children[2].value
+      amt:r.querySelector('.adv-amt').value,
+      s:r.querySelector('.adv-start').value,
+      e:r.querySelector('.adv-end').value,
+      mode:r.querySelector('.adv-mode').value,
+      comment:r.querySelector('.adv-comment').value,
+      chargeInterest:r.querySelector('.adv-interest-chk').checked
     });
   });
 
-  pushHist({
+  const now=new Date();
+  const dateStr=now.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});
+
+  const entry={
     lessee:document.getElementById('lessee').value.trim(),
     land:document.getElementById('land').value,
     unit:document.getElementById('unit').value,
@@ -3126,7 +3233,6 @@ ${advList.length===0?`
     year:document.getElementById('year').value||'—',
     rate:document.getElementById('rate').value,
     payMode:document.getElementById('mode').value,
-    advMode:leaseMode,
     it:document.getElementById('it').value,
     ir:document.getElementById('lfp_ir').value,
     advRows:advSnap,
@@ -3134,12 +3240,110 @@ ${advList.length===0?`
     final:final.toFixed(0),
     adv:totalAdv>0?totalAdv.toFixed(0):'',
     date:dateStr,
-    html
-  });
+    html,
+    paid:{full:false,first:false,second:false}
+  };
+
+  if(_editingIdx!==null){
+    const h=loadHist();
+    if(h[_editingIdx]&&h[_editingIdx].paid)entry.paid=h[_editingIdx].paid;
+    h[_editingIdx]=entry;
+    saveHist(h);
+    _currentHistIdx=_editingIdx;
+    _editingIdx=null;
+  } else {
+    pushHist(entry);
+    _currentHistIdx=0;
+  }
+  updHistBadge();
+  if(document.getElementById('histDrawer').classList.contains('open'))renderHistList();
+  updateGenerateBtn();
+  renderPaidBar();
+}
+
+function renderPaidBar(){
+  const bar=document.getElementById('paidBar');
+  if(_currentHistIdx===null){bar.style.display='none';return;}
+  const h=loadHist();
+  const entry=h[_currentHistIdx];
+  if(!entry){bar.style.display='none';return;}
+  const paid=entry.paid||{};
+  const isHalf=(entry.payMode||document.getElementById('mode').value)==='half';
+  const today=new Date().toISOString().slice(0,10);
+
+  function btnHtml(key,label){
+    const isPaid=!!paid[key];
+    const dateVal=paid[key+'Date']||'';
+    const dateDisplay=dateVal?` · ${fmtDate(dateVal)}`:'';
+    return `<button class="paid-btn${isPaid?' paid':''}" onclick="markPaid('${key}')">${isPaid?`✅ ${label} Paid${dateDisplay}`:`⬜ Mark ${label} Paid`}</button>`;
+  }
+
+  let btns='';
+  if(isHalf){
+    btns=btnHtml('first','1st Half')+btnHtml('second','2nd Half');
+  } else {
+    btns=btnHtml('full','Invoice');
+  }
+
+  let datePicker='';
+  if(_pendingPaidKey){
+    datePicker=`<div class="paid-date-row">
+<span class="paid-date-lbl">Paid on:</span>
+<input type="date" id="paidDateInput" value="${today}" style="flex:1;border:1.5px solid rgba(109,40,217,.2);border-radius:9px;padding:7px 10px;font-size:13px;color:var(--text);background:#fff;outline:none">
+<button class="paid-confirm-btn" onclick="confirmPaid()">Save</button>
+<button class="paid-cancel-btn" onclick="cancelPaid()">Cancel</button>
+</div>`;
+  }
+
+  bar.innerHTML=`<div class="paid-bar"><div class="paid-btn-row">${btns}</div>${datePicker}</div>`;
+  bar.style.display='block';
+}
+
+function markPaid(which){
+  if(_currentHistIdx===null)return;
+  const h=loadHist();
+  if(!h[_currentHistIdx])return;
+  if(!h[_currentHistIdx].paid)h[_currentHistIdx].paid={};
+  const isPaid=!!h[_currentHistIdx].paid[which];
+  if(isPaid){
+    // Unmark: clear paid flag and date immediately
+    h[_currentHistIdx].paid[which]=false;
+    h[_currentHistIdx].paid[which+'Date']='';
+    saveHist(h);
+    _pendingPaidKey=null;
+    renderPaidBar();
+    if(document.getElementById('histDrawer').classList.contains('open'))renderHistList();
+  } else {
+    // Show date picker
+    _pendingPaidKey=which;
+    renderPaidBar();
+  }
+}
+
+function confirmPaid(){
+  if(_currentHistIdx===null||!_pendingPaidKey)return;
+  const dateVal=document.getElementById('paidDateInput').value||new Date().toISOString().slice(0,10);
+  const h=loadHist();
+  if(!h[_currentHistIdx])return;
+  if(!h[_currentHistIdx].paid)h[_currentHistIdx].paid={};
+  h[_currentHistIdx].paid[_pendingPaidKey]=true;
+  h[_currentHistIdx].paid[_pendingPaidKey+'Date']=dateVal;
+  saveHist(h);
+  _pendingPaidKey=null;
+  renderPaidBar();
+  if(document.getElementById('histDrawer').classList.contains('open'))renderHistList();
+}
+
+function cancelPaid(){
+  _pendingPaidKey=null;
+  renderPaidBar();
 }
 
 function resetAll(){
   _leaseGenerated=false;
+  _editingIdx=null;
+  _currentHistIdx=null;
+  _pendingPaidKey=null;
   document.getElementById("lessee").value="";
   document.getElementById("land").value="";
   document.getElementById("unit").value="kanal";
@@ -3148,34 +3352,78 @@ function resetAll(){
   document.getElementById("mode").value="yearly";
   document.getElementById("it").value="rs100";
   document.getElementById("lfp_ir").value="";
-  leaseMode="none";
-  document.querySelectorAll("#t-lease .segBtn").forEach(b=>b.classList.remove("active"));
-  document.querySelector("#t-lease .segBtn").classList.add("active");
   document.getElementById("adv").innerHTML="";
   addAdv();
   document.getElementById("out").innerHTML="";
   document.getElementById("out").classList.remove("stale");
+  document.getElementById("paidBar").style.display="none";
+  updateGenerateBtn();
 }
 
-// wire static inputs to markStale
+// ── Backup / Restore All Data ──
+function backupAll(){
+  const today=new Date().toISOString().slice(0,10);
+  const data={appVersion:APP_VERSION,exportDate:today,lease_invoices:loadHist(),loan_ledger:ldgLoad()};
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='finance_suite_backup_'+today+'.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function restoreAll(input){
+  const file=input.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=ev=>{
+    try{
+      const data=JSON.parse(ev.target.result);
+      const msgs=[];
+      if(Array.isArray(data.lease_invoices)){
+        const existing=loadHist();
+        const lkey=i=>`${i.lessee}_${i.land}_${i.unit}_${i.rate}_${i.year}_${i.date}`;
+        const seen=new Set(existing.map(lkey));
+        const merged=[...data.lease_invoices.filter(i=>!seen.has(lkey(i))),...existing];
+        saveHist(merged.slice(0,50));
+        updHistBadge();
+        msgs.push(`${data.lease_invoices.length} lease invoice(s)`);
+      }
+      if(Array.isArray(data.loan_ledger)){
+        const existing=ldgLoad();
+        const seen=new Set(existing.map(l=>l.id));
+        const merged=[...existing,...data.loan_ledger.filter(l=>!seen.has(l.id))];
+        ldgSave(merged);
+        ldgRender();
+        msgs.push(`${data.loan_ledger.length} ledger loan(s)`);
+      }
+      if(msgs.length)alert('Backup restored: '+msgs.join(', '));
+      else alert('No recognized data found in backup file.');
+    }catch(err){
+      alert('Restore failed — invalid backup file.');
+    }
+  };
+  reader.readAsText(file);
+  input.value='';
+}
+
+// Wire static inputs to markStale
 ["lessee","land","unit","year","rate","mode","it","lfp_ir"].forEach(id=>{
   const el=document.getElementById(id);
-  if(el) el.addEventListener("input",markStale),el.addEventListener("change",markStale);
+  if(el)el.addEventListener("input",markStale),el.addEventListener("change",markStale);
 });
-
 document.getElementById("adv").addEventListener("input",markStale);
 document.getElementById("adv").addEventListener("change",markStale);
 
 updHistBadge();
 addAdv();
+updateGenerateBtn();
 
-/* ── Keyboard-aware scroll: keep focused input visible above soft keyboard ── */
+/* ── Keyboard-aware scroll ── */
 document.addEventListener('focusin',function(e){
   const el=e.target;
   if(el.tagName==='INPUT'||el.tagName==='SELECT'||el.tagName==='TEXTAREA'){
-    setTimeout(function(){
-      el.scrollIntoView({behavior:'smooth',block:'center'});
-    },320);
+    setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'center'});},320);
   }
 });
 
